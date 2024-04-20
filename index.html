@@ -32,7 +32,7 @@
           </li>
         </ul>
       </nav>
-      <button class="open-menu">
+      <button class="open-menu " data-menu-open>
         <svg width="24" height="24">
           <use href="./images/icons.svg#menu-open-icn"></use>
         </svg>
@@ -54,7 +54,7 @@
     <section class="main-title">
       <div class="container">
         <h1 class="main-title-text">Effective Solutions for Your Business</h1>
-        <button class="button" type="button">Order Service</button>
+        <button class="button" type="button" data-modal-open>Order Service</button>
       </div>
     </section>
     <!-- ---------------------------section 2 ------------------------------ -->
@@ -471,7 +471,7 @@
 
         <form class="footer-form-flex" action="#">
           <label class="footer-label" for="footer-email">
-            <input class="footer-iput" type="email" placeholder="E-mail" id="footer-email" name="usermail" />
+            <input class="footer-input" type="email" placeholder="E-mail" id="footer-email" name="usermail" />
           </label>
           <button class="footer-button" type="submit">
             Subscribe
@@ -485,9 +485,9 @@
   </footer>
 
   <!-- -------------Modal--------------------------------- -->
-  <div class="modal-overlay">
+  <div class="modal-overlay" data-modal>
     <div class="modal">
-      <button class="close-icon" type="button">
+      <button class="close-icon" type="button" data-modal-close>
         <svg class="svg-close-icon" width="8" height="8">
           <use href="./images/icons.svg#icon-cross"></use>
         </svg>
@@ -551,8 +551,8 @@
   </div>
 
   <!-- -------------Menu-mobile--------------------------------- -->
-  <div class="mobile-menu">
-    <button class="mobile-bnt-close" type="button">
+  <div class="mobile-menu" data-menu>
+    <button class="mobile-bnt-close" type="button" data-menu-close>
       <svg class="svg-close-icon" width="8" height="8">
         <use href="./images/icons.svg#icon-cross"></use>
       </svg>
@@ -615,6 +615,53 @@
     </div>
 
   </div>
+  <script>
+    (() => {
+      const refs = {
+        openMenuBtn: document.querySelectorAll('[data-menu-open]'),
+        closeMenuBtn: document.querySelectorAll('[data-menu-close]'),
+        menu: document.querySelector('[data-menu]'),
+      };
+
+
+      refs.openMenuBtn.forEach((element) => {
+        element.addEventListener('click', toggleMenu);
+      });
+
+
+      refs.closeMenuBtn.forEach((element) => {
+        element.addEventListener('click', toggleMenu);
+      });
+
+      function toggleMenu() {
+        refs.menu.classList.toggle('is-open');
+        document.body.classList.toggle('no-scroll');
+      }
+    })();
+
+    (() => {
+      const refs = {
+        openModalBtn: document.querySelectorAll('[data-modal-open]'),
+        closeModalBtn: document.querySelectorAll('[data-modal-close]'),
+        modal: document.querySelector('[data-modal]'),
+      };
+
+
+      refs.openModalBtn.forEach((element) => {
+        element.addEventListener('click', toggleMenu);
+      });
+
+
+      refs.closeModalBtn.forEach((element) => {
+        element.addEventListener('click', toggleMenu);
+      });
+
+      function toggleMenu() {
+        refs.modal.classList.toggle('is-open');
+
+      }
+    })();
+  </script>
 </body>
 
 </html>
